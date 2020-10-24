@@ -1,0 +1,35 @@
+Docker
+
+. docker --help
+. docker run --help
+
+Images
+
+. docker rmi <imagename>  -- remove image <imagename>
+. docker images -- display installed images
+.
+
+
+Containers
+
+. docker run -it <image id> -- run the image with <imageid> in interactive mode
+. docker ps -a              -- List the Containers
+. docker stop <container id> -- stop the container
+. docker rm <container id1> <container id2> -- remove containers 
+. docker commit <container id> <your new custom image> -- create image from existing container, 
+                                                        --container can have modifications inside it
+. docker start <container id>  -- start existing container in non interactive mode
+. docker exec -it <container id> /bin/bash -- execute command in container with interactive mode
+. docker stop <container id> -- stop running container
+. docker rename <old container name> <new container name> -- rename container name
+. docker exec -it -u <user name> <container name> /bin/bash -- login to container with already created user
+. docker cp <container name>:<source> <destination> -- docker cp test1:/test1.txt .
+. docker run -td --name webserver -p 81:80 ubuntu -- open port 81 on host machine and map to port 80 on container
+. docker run -it -h lordofrings.local ubuntu bash -- give local host name to container 
+. docker run -it --name test1 -v F:\DemoProjects\DockerLearn\Data:/data ubuntu bash -- mount host directory in container 
+. docker inspect <container id> -- configuration of the container 
+. docker run -it --name test1 -v Data:/data ubuntu bash -- create volume and attached to container , bind mount
+. docker volume ls -- list the volumes
+
+. docker run -it --name master -v backup:/backup -v logs:/logs ubuntu bash -- create volume "backup" and "logs" on container master
+. docker run -it --name slave1 --volumes-from master ubuntu bash -- slave1 has visibility on the files created by master container
